@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pasien_umum_form" model="ir.ui.view">
+        <field name="name">pasien.umum.form</field>
+        <field name="model">pasien.umum</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="duplicate_confirmation" type="object" string="Ajukan Konfirmasi" class="oe_highlight" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name_umum"/>
+                            <field name="nip_umum"/>
+                            <field name="posisi_umum"/>
+                            <field name="tanggal_umum"/>
+                        </group>
+                        <group> 
+                            <field name="kode_work_center_umum"/>
+                            <field name="jam_umum"/>
+                            <field name="poli"/>
+                            <field name="kode_poli_umum"/>
+                            <field name="kode_poli_gigi"/>
+                        </group> 
+                    </group> 
+                </sheet>
+            </form> 
+        </field>          
+    </record>
+
+    <record id="pasien_umum_tree" model="ir.ui.view">
+        <field name="name">pasien.umum.view</field>
+        <field name="model">pasien.umum</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- <field name="reference_pasien_umum"/> -->
+                <field name="name_umum"/>
+                <field name="nip_umum"/>
+                <field name="tanggal_umum"/>
+                <field name="posisi_umum"/>
+                <field name="kode_work_center_umum"/>
+                <field name="jam_umum"/>
+                <field name="poli"/>
+                <field name="kode_poli_umum"/>
+                <field name="kode_poli_gigi"/>
+            </tree>
+        </field>    
+    </record>
+
+    <record id="pasien_umum_kanban" model="ir.ui.view">
+        <field name="name">pasien.umum.view</field>
+        <field name="model">pasien.umum</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name_umum"/>
+                <field name="nip_umum"/>
+                <field name="tanggal_umum"/>
+                <field name="kode_work_center_umum"/>
+                <templates>
+                     <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul> 
+                                    <li>
+                                        <field name="name_umum"/>
+                                    </li>
+                                    <li> 
+                                        <field name="nip_umum"/>
+                                    </li>
+                                    <li> 
+                                        <field name="jam_umum"/>
+                                    </li>
+                                    <li> 
+                                        <field name="tanggal_umum"/>
+                                    </li>
+                                    <li> 
+                                        <field name="posisi_umum"/>
+                                    </li>
+                                    <li> 
+                                        <field name="kode_work_center_umum"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t> 
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="pasien_umum_action" model="ir.actions.act_window">
+        <field name="name">Pendaftaran Poli Umum</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pasien.umum</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_noncontent_smiling_face">
+                Tuliskan keluhanmu, utamakan kesehatanmu!!!
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem
+        id="poli_pasien"
+        name="Clinic"
+        sequence="10"/>
+
+    <menuitem
+        id="poli_pendaftaran"
+        name="Poli Pendaftaran"
+        parent="poli_pasien"
+        sequence="10"/>
+
+    <menuitem
+        id="poli_umum"
+        name="Poli Umum"
+        parent="poli_pendaftaran"
+        action="pasien_umum_action"
+        sequence="10"/> 
+
+</odoo>

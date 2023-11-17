@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <report 
+        id="report_Surat_Gigi"
+        string="Surat Klinik Poli Gigi"
+        model="status.gigi"
+        report_type="qweb-pdf"
+        name="clinic.report_surat"
+        file="clinic.report_surat"/>
+        
+</odoo>

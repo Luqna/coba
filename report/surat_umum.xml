@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_surat_umum">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="col-12 text-center">
+                        <table style="width: 100%;">
+                            <tr>
+                                <td colspan="4" style="text-align: center;">
+                                    <!-- <h2 style="font-weight: bold; font-size: 30px; margin-top: 20px; margin-bottom: 60px;">Don't Forget to Save Your Ticket Until The Day!!</h2> -->
+                                    <!-- <img t-att-src="'data:image/jpeg;base64,' + doc.image.decode('utf-8')" style="max-width: 200px; margin-top: 20px;" /> -->
+                                    <h2 style="font-weight: bold; font-size: 40px; margin-top: 20px; margin-bottom: 20px;">Surat Klinik Poli Umum</h2>
+                                    <p style="font-weight: bold; font-size: 20px; margin-top: 5px; margin-bottom: 10px;"><span t-field="doc.reference"/></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%; text-align: left; padding-right: 20px;">
+                                    <p><strong>Name:</strong> <span t-field="doc.name_umum"/></p>
+                                    <p><strong>NIP:</strong> <span t-field="doc.nip_umum"/></p>
+                                    <p><strong>Tanggal:</strong> <span t-field="doc.tanggal_umum"/></p>
+                                </td>
+                                <td style="width: 25%; text-align: right; padding-right: 20px;">
+                                    <p><strong>Posisi:</strong> <span t-field="doc.posisi_umum"/></p>
+                                    <p><strong>Kode Work Center:</strong> <span t-field="doc.kode_work_center_umum"/></p>
+                                    <p><strong>Jam:</strong> <span t-field="doc.jam_umum"/></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" style="text-align: right; padding-top: 50px;">
+                                    <div style="text-align: right;">
+                                        <p>Surabaya, <span t-field="doc.tanggal_umum" t-options='{"widget": "date"}'/></p>
+                                        <p style="margin-top: 20px; margin-right: 50px; "><strong>KADEP</strong></p>
+                                        <br/>
+                                        <br/>
+                                        <div style="text-align: right;">
+                                            <p>(............................................)</p>
+                                            <p style="margin-right: 125px; margin-bottom: 30px;">NIP</p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" style="text-align: center;">
+                                    <p><strong>Hal yang harus diperhatikan :</strong></p>
+                                    <div style="border: 1px solid #000; padding: 10px; margin: 10px 0; text-align: left; max-width: 600px; margin-left: auto; margin-right: auto;">
+                                        <ul>
+                                            <li>Pastikan selalu membawa surat izin sakit ini saat anda pergi ke klinik.</li>
+                                            <li>Informasikan kepada pihak yang berwenang di tempat kerja mengenai izin sakit.</li>
+                                            <li>Pastikan membawa identifikasi diri seperti KTP atau kartu identitas lainnya.</li>
+                                            <li>Hubingi pihak yang berwenang apabila terdapat perubahan.</li>
+                                            <li>Pastikan penggunaan surat izin sakit sesuai dengan keadaan sebenarnya.</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t> 
+            </t>
+        </t> 
+    </template>
+
+</odoo>

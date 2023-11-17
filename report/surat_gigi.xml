@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_surat">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="col-12 text-center">
+                        <table style="width: 100%;">
+                            <tr>
+                                <td colspan="4" style="text-align: center;">
+                                    <!-- <h2 style="font-weight: bold; font-size: 30px; margin-top: 20px; margin-bottom: 60px;">Don't Forget to Save Your Ticket Until The Day!!</h2> -->
+                                    <!-- <img t-att-src="'data:image/jpeg;base64,' + doc.image.decode('utf-8')" style="max-width: 200px; margin-top: 20px;" /> -->
+                                    <h2 style="font-weight: bold; font-size: 40px; margin-top: 20px; margin-bottom: 5px;">Surat Klinik Poli Gigi</h2>
+                                    <p style="font-weight: bold; font-size: 20px; margin-top: 5px; margin-bottom: 10px;"><span t-field="doc.reference"/></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%; text-align: left; padding-right: 20px;">
+                                    <p><strong>Name:</strong> <span t-field="doc.name_gigi"/></p>
+                                    <p><strong>NIP:</strong> <span t-field="doc.nip_gigi"/></p>
+                                    <p><strong>Tanggal:</strong> <span t-field="doc.tanggal_gigi"/></p>
+                                </td>
+                                <td style="width: 25%; text-align: right; padding-right: 20px;">
+                                    <p><strong>Posisi:</strong> <span t-field="doc.posisi_gigi"/></p>
+                                    <p><strong>Kode Work Center:</strong> <span t-field="doc.kode_work_center_gigi"/></p>
+                                    <p><strong>Jam:</strong> <span t-field="doc.jam_gigi"/></p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t> 
+            </t>
+        </t> 
+    </template>
+
+</odoo>

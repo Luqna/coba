@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_status_umum_form" model="ir.ui.view">
+        <field name="name">status.umum.form</field>
+        <field name="model">status.umum</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title"> 
+                        <h1>
+                            <field name="reference" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name_umum"/>
+                            <field name="nip_umum"/>
+                            <field name="posisi_umum"/>
+                        </group>
+                        <group> 
+                            <field name="tanggal_umum"/>
+                            <field name="kode_work_center_umum"/>
+                            <field name="jam_umum"/>
+                            <field name="state_umum"/>
+                        </group> 
+                    </group> 
+                </sheet>
+            </form> 
+        </field>          
+    </record>
+
+    <record id="status_umum_tree" model="ir.ui.view">
+        <field name="name">status.umum.view</field>
+        <field name="model">status.umum</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- <field name="reference_pasien_umum"/> -->
+                <field name="name_umum"/>
+                <field name="nip_umum"/>
+                <field name="tanggal_umum"/>
+                <field name="posisi_umum"/>
+                <field name="kode_work_center_umum"/>
+                <field name="jam_umum"/>
+                <field name="state_umum"/>
+            </tree>
+        </field>    
+    </record>
+
+    <record id="status_umum_action" model="ir.actions.act_window">
+        <field name="name">Status Pendaftaran Poli Umum</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">status.umum</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_noncontent_smiling_face">
+                Tuliskan keluhanmu, utamakan kesehatanmu!!!
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="status_konfirmasi_umum"
+        name="Status Konfirmasi Poli Umum"
+        parent="status_konfirmasi"
+        action="status_umum_action"
+        sequence="10"/>
+</odoo>

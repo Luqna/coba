@@ -1,0 +1,12 @@
+<!-- <?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <report 
+        id="report_Surat_Gigi"
+        string="Surat Klinik Poli Gigi"
+        model="pasien.gigi"
+        report_type="qweb-pdf"
+        name="airplane.report_ticket"
+        file="airplane.report_ticket"/>
+        
+</odoo> -->

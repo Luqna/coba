@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="view_konfirmasi_gigi_form" model="ir.ui.view">
         <field name="name">pasien.konfirmasi.form</field>
@@ -23,6 +23,8 @@
                             <field name="kode_work_center_gigi"/>
                             <field name="jam_gigi"/>
                             <field name="state_gigi"/>
+                            <field name="kode_poli_umum"/>
+                            <field name="kode_poli_gigi"/>
                         </group> 
                     </group> 
                 </sheet>
@@ -35,7 +37,7 @@
         <field name="model">pasien.konfirmasi</field>
         <field name="arch" type="xml">
             <tree>
-                <!-- <field name="reference_pasien_umum"/> -->
+               
                 <field name="name_gigi"/>
                 <field name="nip_gigi"/>
                 <field name="tanggal_gigi"/>
@@ -43,6 +45,8 @@
                 <field name="kode_work_center_gigi"/>
                 <field name="jam_gigi"/>
                 <field name="state_gigi"/>
+                <field name="kode_poli_umum"/>
+                <field name="kode_poli_gigi"/>
             </tree>
         </field>    
     </record>
@@ -66,9 +70,9 @@
         sequence="10"/> 
     
     <menuitem
-        id="pasien_konfirmasi_gigi"
-        name="Konfirmasi Poli Gigi"
+        id="pasien_konfirmasi"
+        name="Konfirmasi Pendaftaran"
         parent="konfirmasi_pasien"
         action="konfirmasi_gigi_action"
         sequence="10"/>
-</odoo>
+</odoo> -->

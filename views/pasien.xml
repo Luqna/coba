@@ -115,7 +115,7 @@
 
     <menuitem
         id="poli_umum"
-        name="Poli Umum"
+        name="Poli Pendaftaran Pasien"
         parent="poli_pendaftaran"
         action="pasien_umum_action"
         sequence="10"/> 

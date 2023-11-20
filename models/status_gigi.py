@@ -1,4 +1,5 @@
 from odoo import api, fields, models, _
+from odoo.exceptions import UserError
 
 class StatusGigi(models.Model):
     _name = "status.gigi"
@@ -44,3 +45,36 @@ class StatusGigi(models.Model):
         res = super(StatusGigi, self).create(vals)
         return res
   
+    poli = fields.Selection([
+            ('umum','Poli Umum'),
+            ('gigi','Poli Gigi')], 
+            required=True, default = 'umum', tracking = True)
+
+
+    kode_poli_umum = fields.Char(store=True, string='Nomor Urut Poli Umum')
+    kode_poli_gigi = fields.Char(store=True, string='Nomor Urut Poli Gigi')
+
+    # Counter untuk nomor urut pasien poli umum
+    counter_poli_umum = fields.Integer(string='Counter Poli Umum', default=1)
+
+    # Counter untuk nomor urut pasien poli gigi
+    counter_poli_gigi = fields.Integer(string='Counter Poli Gigi', default=1)
+
+    # @api.depends('poli', 'counter_poli_umum', 'counter_poli_gigi')
+    # def _compute_kode_poli_umum(self):
+    #     for rec in self:
+    #         if rec.poli == 'umum':
+    #             rec.kode_poli_umum = 'PU-{}'.format(str(rec.counter_poli_umum))
+    #             rec.counter_poli_umum += 1
+    #         else:
+    #             rec.kode_poli_umum = False
+
+    # @api.depends('poli', 'counter_poli_gigi', 'counter_poli_umum')
+    # def _compute_kode_poli_gigi(self):
+    #     for rec in self:
+    #         if rec.poli == 'gigi':
+    #             rec.kode_poli_gigi = 'PG-{}'.format(str(rec.counter_poli_gigi))
+    #             rec.counter_poli_gigi += 1
+    #         else:
+    #             rec.kode_poli_gigi = False
+    #             rec.counter_poli_umum += 1  # Menambahkan counter_poli_umum untuk poli selain 'gigi'

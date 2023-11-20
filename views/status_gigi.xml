@@ -1,55 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_status_gigi_form" model="ir.ui.view">
-        <field name="name">status.gigi.form</field>
-        <field name="model">status.gigi</field>
-        <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <div class="oe_title"> 
-                        <h1>
-                            <field name="reference" readonly="1"/>
-                        </h1>
-                    </div>
-                    <group>
-                        <group>
-                            <field name="name_gigi"/>
-                            <field name="nip_gigi"/>
-                            <field name="posisi_gigi"/>
-                        </group>
-                        <group> 
-                            <field name="tanggal_gigi"/>
-                            <field name="kode_work_center_gigi"/>
-                            <field name="jam_gigi"/>
-                            <field name="state_gigi"/>
-                        </group> 
-                    </group> 
-                </sheet>
-            </form> 
-        </field>          
-    </record>
-
-    <record id="status_gigi_tree" model="ir.ui.view">
-        <field name="name">status.gigi.view</field>
-        <field name="model">status.gigi</field>
-        <field name="arch" type="xml">
-            <tree>
-                <!-- <field name="reference_pasien_umum"/> -->
-                <field name="name_gigi"/>
-                <field name="nip_gigi"/>
-                <field name="tanggal_gigi"/>
-                <field name="posisi_gigi"/>
-                <field name="kode_work_center_gigi"/>
-                <field name="jam_gigi"/>
-                <field name="state_gigi"/>
-            </tree>
-        </field>    
-    </record>
+    
 
     <record id="status_gigi_action" model="ir.actions.act_window">
         <field name="name">Status Pendaftaran Poli Gigi</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">status.gigi</field>
+        <field name="res_model">status.umum</field>
+        <field name="domain">[('poli','=','gigi')]</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_noncontent_smiling_face">

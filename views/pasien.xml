@@ -6,9 +6,14 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="duplicate_confirmation" type="object" string="Ajukan Konfirmasi" class="oe_highlight" />
+                    <button id="button_duplicate" string="Ajukan" type="object" class="oe_highlight" name="duplicate_confirmation"/>
                 </header>
                 <sheet>
+                    <div class="oe_title"> 
+                        <h1>
+                            <field name="reference" readonly="1"/>
+                        </h1>
+                    </div>
                     <group>
                         <group>
                             <field name="name_umum"/>
@@ -20,8 +25,7 @@
                             <field name="kode_work_center_umum"/>
                             <field name="jam_umum"/>
                             <field name="poli"/>
-                            <field name="kode_poli_umum"/>
-                            <field name="kode_poli_gigi"/>
+                            
                         </group> 
                     </group> 
                 </sheet>
@@ -34,7 +38,7 @@
         <field name="model">pasien.umum</field>
         <field name="arch" type="xml">
             <tree>
-                <!-- <field name="reference_pasien_umum"/> -->
+                <field name="reference"/>
                 <field name="name_umum"/>
                 <field name="nip_umum"/>
                 <field name="tanggal_umum"/>
@@ -42,8 +46,7 @@
                 <field name="kode_work_center_umum"/>
                 <field name="jam_umum"/>
                 <field name="poli"/>
-                <field name="kode_poli_umum"/>
-                <field name="kode_poli_gigi"/>
+                
             </tree>
         </field>    
     </record>

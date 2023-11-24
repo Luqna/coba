@@ -8,8 +8,9 @@ from datetime import date
 class PasienUmum(models.Model):
     _name = "pasien.umum"
     _description = "PASIEN DARI POLI UMUM PT.PAL"
+    _rec_name = 'name_umum'
 
-    # reference_pasien_umum = fields.Char(string='Reference', required=True, readonly=True, copy=False, default=lambda self: _('New'))
+    reference = fields.Char(string='Reference', required=True, readonly=True, copy=False, default=lambda self: _('New'))
 
     name_umum = fields.Char(string='Nama Pasien', required=True)
     
@@ -38,22 +39,37 @@ class PasienUmum(models.Model):
             ('umum','Poli Umum'),
             ('gigi','Poli Gigi')], 
             required=True, default = 'umum', tracking = True)
+    
+    # state = fields.Selection([
+    #     ('darft', 'Draft'),
+    #     ('confirm', 'Confirmed')], 
+    #     required=True, string='status', default='draft', tracking=True)
 
-    kode_poli_umum = fields.Char(store=True, string='Nomor Urut Poli Umum', compute='_compute_kode_poli', readonly=True)
-    kode_poli_gigi = fields.Char(store=True, string='Nomor Urut Poli Gigi', compute='_compute_kode_poli', readonly=True)
+    # def action_confirm(self):
+    #     self.state = 'confirm'
 
+    # def action_confirm(self):
+    #     self.state = 'draft'
 
-    # @api.depends('poli')
-    # def _compute_kode_poli(self):
-    #     for record in self:
-    #         nomor_urut = self.env['ir.sequence'].next_by_code('my_module.poli.common.sequence')
-    #         if record.poli == 'umum':
-    #             record.kode_poli_umum = f'PU-{nomor_urut}'
-    #             record.kode_poli_gigi = False
-    #         elif record.poli == 'gigi':
-    #             record.kode_poli_gigi = f'PG-{nomor_urut}'
-    #             record.kode_poli_umum = False
+    @api.model
+    def create(self, vals):
+        if vals.get('reference', _('New')) == _('New'):
+            if vals.get('poli') == 'umum':
+                vals['reference'] = self.env['ir.sequence'].next_by_code('pasien.umum.poli') or _('New')
+            elif vals.get('poli') == 'gigi':
+                vals['reference'] = self.env['ir.sequence'].next_by_code('pasien.umum.gigi') or _('New')
+        return super(PasienUmum, self).create(vals)
 
+    state = fields.Selection([('draft', 'Draft'), ('done', 'Done'), ('cancel', 'Cancel')], default='draft', string="Status")
+
+    def action_confirm(self):
+        self.state = 'done'
+    
+    def action_cancel(self):
+        self.state = 'cancel'
+
+    def action_draft(self):
+        self.state = 'draft'
 
     
 
@@ -67,6 +83,7 @@ class PasienUmum(models.Model):
     def duplicate_confirmation(self):
         for pasien in self:
             vals = {
+                'reference': pasien.reference,
                 'name_umum': pasien.name_umum,
                 'tanggal_umum': pasien.tanggal_umum,
                 'nip_umum': pasien.nip_umum,
@@ -74,8 +91,7 @@ class PasienUmum(models.Model):
                 'kode_work_center_umum': pasien.kode_work_center_umum,
                 'jam_umum': pasien.jam_umum,
                 'poli': pasien.poli,
-                'kode_poli_umum': pasien.kode_poli_umum,
-                'kode_poli_gigi': pasien.kode_poli_gigi,
+                'state': pasien.state,
             }
             
             konfirmasi_umum = self.env['pasien.konfirmasi'].create(vals)

@@ -1,78 +1,115 @@
-<!-- <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_konfirmasi_gigi_form" model="ir.ui.view">
+    <record id="view_konfirmasi_umum_form" model="ir.ui.view">
         <field name="name">pasien.konfirmasi.form</field>
         <field name="model">pasien.konfirmasi</field>
         <field name="arch" type="xml">
             <form>
                 <header>
                     <button id="button_confirm" name="action_confirm" string="Confirm" class="btn-primary" state="confirm" confirm="Apakah anda yakin ingin menyetujui?" type="object"/>
-                    <button id="button_cancel" name="action_cancel" string="Cancel" class="btn-primary" state="cancel" confirm="Apakah anda yakin ingin membatalkan?" type="object"/>
-                    <field name="state_gigi" widget="statusbar" statusbar_visible="draft,done,confirm"/>
-                    <button id="button_duplicate" string="Terkonfirmasi" type="object" class="oe_highlight" name="duplicat" attrs="{'invisible': [('state_gigi', 'in', ['draft', 'cancel'])]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done,confirm"/>
+                    <button id="button_duplicate" string="Terkonfirmasi" type="object" class="oe_highlight" name="duplicate"/>
                 </header>
                 <sheet>
                     <group>
                         <group>
-                            <field name="name_gigi"/>
-                            <field name="nip_gigi"/>
-                            <field name="posisi_gigi"/>
+                            <field name="reference"/>
+                            <field name="name_umum"/>
+                            <field name="nip_umum"/>
+                            <field name="posisi_umum"/>
                         </group>
                         <group> 
-                            <field name="tanggal_gigi"/>
-                            <field name="kode_work_center_gigi"/>
-                            <field name="jam_gigi"/>
-                            <field name="state_gigi"/>
-                            <field name="kode_poli_umum"/>
-                            <field name="kode_poli_gigi"/>
+                            <field name="tanggal_umum"/>
+                            <field name="kode_work_center_umum"/>
+                            <field name="jam_umum"/>
+                            <field name="poli"/>
                         </group> 
                     </group> 
                 </sheet>
             </form> 
         </field>          
     </record>
-
-    <record id="konfirmasi_gigi_tree" model="ir.ui.view">
+    <record id="konfirmasi_umum_tree" model="ir.ui.view">
         <field name="name">pasien.konfirmasi.view</field>
         <field name="model">pasien.konfirmasi</field>
         <field name="arch" type="xml">
             <tree>
-               
-                <field name="name_gigi"/>
-                <field name="nip_gigi"/>
-                <field name="tanggal_gigi"/>
-                <field name="posisi_gigi"/>
-                <field name="kode_work_center_gigi"/>
-                <field name="jam_gigi"/>
-                <field name="state_gigi"/>
-                <field name="kode_poli_umum"/>
-                <field name="kode_poli_gigi"/>
+                <field name="reference"/>
+                <field name="name_umum"/>
+                <field name="nip_umum"/>
+                <field name="tanggal_umum"/>
+                <field name="posisi_umum"/>
+                <field name="kode_work_center_umum"/>
+                <field name="jam_umum"/>
+                <field name="poli"/>
+                <field name="state"/>
             </tree>
         </field>    
     </record>
 
-    <record id="konfirmasi_gigi_action" model="ir.actions.act_window">
-        <field name="name">Konfirmasi Poli Gigi</field>
+    <record id="konfirmasi_umum_kanban" model="ir.ui.view">
+        <field name="name">pasien.konfirmasi.view</field>
+        <field name="model">pasien.konfirmasi</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name_umum"/>
+                <field name="nip_umum"/>
+                <field name="tanggal_umum"/>
+                <field name="kode_work_center_umum"/>
+                <templates>
+                     <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul> 
+                                    <li>
+                                        <field name="name_umum"/>
+                                    </li>
+                                    <li> 
+                                        <field name="nip_umum"/>
+                                    </li>
+                                    <li> 
+                                        <field name="jam_umum"/>
+                                    </li>
+                                    <li> 
+                                        <field name="tanggal_umum"/>
+                                    </li>
+                                    <li> 
+                                        <field name="posisi_umum"/>
+                                    </li>
+                                    <li> 
+                                        <field name="kode_work_center_umum"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t> 
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="clinic.konfirmasi_gigi_action" model="ir.actions.act_window">
+        <field name="name">Pendaftaran Poli Umum</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">pasien.konfirmasi</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
         <field name="help" type="html">
             <p class="o_view_noncontent_smiling_face">
-                Tuliskan keluhanmu, utamakan kesehatanmu!!!
+                Konfirmasi dan utamakan kesehatanmu!!!
             </p>
         </field>
     </record>
 
-    <menuitem
-        id="konfirmasi_pasien"
-        name="Konfirmasi Pendaftaran"
-        parent="poli_pasien"
-        sequence="10"/> 
+    <menuitem 
+    id="konfirmasi_pasien" 
+    name="Konfirmasi Pendaftaran" 
+    parent="poli_pasien" sequence="10"/> 
     
-    <menuitem
-        id="pasien_konfirmasi"
-        name="Konfirmasi Pendaftaran"
-        parent="konfirmasi_pasien"
-        action="konfirmasi_gigi_action"
-        sequence="10"/>
-</odoo> -->
+    <menuitem 
+    id="pasien_konfirmasi" 
+    name="Konfirmasi Pendaftaran" 
+    parent="konfirmasi_pasien" 
+    action="konfirmasi_gigi_action" 
+    sequence="10"/>
+
+</odoo>

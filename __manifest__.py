@@ -8,17 +8,14 @@
     'depends': ['base'],
     'data' : [
       'views/pasien.xml',
-      # 'views/pasien_gigi.xml',
-      # 'views/konfirmasi.xml',
-      # 'views/konfirmasi_umum.xml',
-      'views/status_gigi.xml',
-      'views/status_umum.xml',
+      'views/konfirmasi.xml',
+      'views/status.xml',
+      'views/report_admin.xml',
       'report/report_gigi.xml',
       'report/surat_gigi.xml',
-      'report/report_umum.xml',
-      'report/surat_umum.xml',
-      'data/gigi.xml',
-      'data/umum.xml',
+      # 'report/report_umum.xml',
+      # 'report/surat_umum.xml',
+      'data/pasien_urut.xml',
       'security/ir.model.access.csv'
     ]
 }

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_report_admin_form" model="ir.ui.view">
+        <field name="name">report.admin.form</field>
+        <field name="model">report.admin</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="nama_admin"/>
+                            <field name="reference_nama_pasien"/>
+                            <field name="tanggal_admin"/>
+                        </group>
+                        <group> 
+                            <field name="diagnosa"/>
+                            <field name="catatan"/>
+                            <field name="poli_admin"/>
+                        </group> 
+                    </group> 
+                </sheet>
+            </form> 
+        </field>          
+    </record>
+
+    <record id="report_admin_tree" model="ir.ui.view">
+        <field name="name">report.admin.view</field>
+        <field name="model">report.admin</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="nama_admin"/>
+                <field name="reference_nama_pasien"/>
+                <field name="tanggal_admin"/>
+                <field name="diagnosa"/>
+                <field name="catatan"/>
+                <field name="poli_admin"/>
+            </tree>
+        </field>    
+    </record>
+
+    <record id="report_admin_action" model="ir.actions.act_window">
+        <field name="name">Pendaftaran Poli Umum</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">report.admin</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_noncontent_smiling_face">
+                Selalu Arsipkan Catatan Medis!!!
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="report_admin"
+        name="Report"
+        parent="poli_pasien"
+        sequence="10"/> 
+    
+    <menuitem
+        id="report_khusus_admin"
+        name="Catatan Medis"
+        parent="report_admin"
+        action="report_admin_action"
+        sequence="10"/>
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <!-- Sequence for Umum -->
+    <record id="sequence_pasien_umum_poli" model="ir.sequence">
+        <field name="name">pasien.umum.poli</field>
+        <field name="code">pasien.umum.poli</field>
+        <field name="prefix">PU</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <!-- Sequence for Gigi -->
+    <record id="sequence_pasien_umum_gigi" model="ir.sequence">
+        <field name="name">pasien.umum.gigi</field>
+        <field name="code">pasien.umum.gigi</field>
+        <field name="prefix">PG</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+</odoo>

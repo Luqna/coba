@@ -3,4 +3,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_pasien_umum,accsess.pasien.umum,model_pasien_umum,,1,1,1,1
 access_pasien_konfirmasi,accsess.pasien.konfirmasi,model_pasien_konfirmasi,,1,1,1,1
 access_status_gigi,accsess.status.gigi,model_status_gigi,,1,1,1,1
-access_status_umum,accsess.status.umum,model_status_umum,,1,1,1,1
+access_report_admin,accsess.report.admin,model_report_admin,,1,1,1,1

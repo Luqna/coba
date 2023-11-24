@@ -1,10 +1,11 @@
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 
-class KonfirmasiGigi(models.Model):
-    _name = "pasien.konfirmasi"
-    _description = "KONFIRMASI DARI POLI PT.PAL"
+class StatusGigi(models.Model):
+    _name = "status.gigi"
+    _description = "STATUS KONFIRMASI DARI POLI PT.PAL"
 
+   
     reference = fields.Char(string='Reference', required=True, readonly=True, copy=False, default=lambda self: _('New'))
   
     name_umum = fields.Char(string='Nama Pasien', required=True)
@@ -45,48 +46,5 @@ class KonfirmasiGigi(models.Model):
 
     def action_draft(self):
         self.state = 'draft'
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    def duplicate(self):
-        for status in self:
-            vals = {
-                'reference': status.reference,
-                'name_umum': status.name_umum,
-                'tanggal_umum': status.tanggal_umum,
-                'nip_umum': status.nip_umum,
-                'posisi_umum': status.posisi_umum,
-                'kode_work_center_umum': status.kode_work_center_umum,
-                'jam_umum': status.jam_umum,
-                'poli': status.poli,
-                'state': status.state,
-            }
-            
-            status_konfirmasi = self.env['status.gigi'].create(vals)
-    
-    # @api.model
-    # def create(self, vals):
-    #     if vals.get('reference', _('New')) == _('New'):
-    #         if vals.get('poli') == 'umum':
-    #             vals['reference'] = self.env['ir.sequence'].next_by_code('pasien.umum.poli') or _('New')
-    #         elif vals.get('poli') == 'gigi':
-    #             vals['reference'] = self.env['ir.sequence'].next_by_code('pasien.umum.gigi') or _('New')
-    #     return super(PasienUmum, self).create(vals)
-
-    
-
-
-
-
 
 

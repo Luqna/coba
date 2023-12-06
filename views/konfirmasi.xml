@@ -89,7 +89,7 @@
     </record>
 
     <record id="clinic.konfirmasi_gigi_action" model="ir.actions.act_window">
-        <field name="name">Pendaftaran Poli Umum</field>
+        <field name="name">Konfirmasi Poli PT. PAL Indonesia</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">pasien.konfirmasi</field>
         <field name="view_mode">tree,form,kanban</field>

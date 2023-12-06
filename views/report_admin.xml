@@ -40,7 +40,7 @@
     </record>
 
     <record id="report_admin_action" model="ir.actions.act_window">
-        <field name="name">Pendaftaran Poli Umum</field>
+        <field name="name">Catatan Medis Pasien</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">report.admin</field>
         <field name="view_mode">tree,form</field>

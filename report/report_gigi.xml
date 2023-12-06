@@ -3,7 +3,7 @@
 
     <report 
         id="report_Surat_Gigi"
-        string="Surat Klinik Poli Gigi"
+        string="Cetak Surat Izin"
         model="status.gigi"
         report_type="qweb-pdf"
         name="clinic.report_surat"

@@ -50,7 +50,7 @@
     </record>
 
     <record id="clinic.konfirmasi_status_action" model="ir.actions.act_window">
-        <field name="name">Status Konfirmasi Pendaftaran</field>
+        <field name="name">Status Konfirmasi Poli PT. PAL Indonesia</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">status.gigi</field>
         <field name="view_mode">tree,form</field>

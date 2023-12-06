@@ -93,7 +93,7 @@
     </record>
 
     <record id="pasien_umum_action" model="ir.actions.act_window">
-        <field name="name">Pendaftaran Poli Umum</field>
+        <field name="name">Pendaftaran Poli PT. PAL Indonesia</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">pasien.umum</field>
         <field name="view_mode">tree,form,kanban</field>
